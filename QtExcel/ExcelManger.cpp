@@ -18,7 +18,9 @@ bool ExcelManger::Test(QString &path)
     QAxObject *excel = NULL;    //本例中，excel设定为Excel文件的操作对象
     QAxObject *workbooks = NULL;
     QAxObject *workbook = NULL;  //Excel操作对象
-    excel = new QAxObject("Excel.Application");
+    
+    excel = new QAxObject("Excel.Application");    //如果这里改成 "ket.Application"则可以打开wps2019,但是无法读取其中的数据，不知什么原因?
+    
     excel->dynamicCall("SetVisible(bool)", true); //true 表示操作文件时可见，false表示为不可见
     workbooks = excel->querySubObject("WorkBooks");
 
